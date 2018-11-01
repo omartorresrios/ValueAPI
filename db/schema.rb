@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_01_030403) do
+ActiveRecord::Schema.define(version: 2018_11_01_040622) do
 
   create_table "reviews", force: :cascade do |t|
     t.string "from"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2018_11_01_030403) do
     t.string "google_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
     t.index ["google_id"], name: "index_users_on_google_id"
   end
 

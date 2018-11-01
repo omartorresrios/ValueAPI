@@ -78,6 +78,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mimemagic (0.3.2)
+    mini_magick (4.7.0)
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
@@ -147,6 +148,7 @@ DEPENDENCIES
   byebug
   carrierwave (~> 0.11.2)
   listen (>= 3.0.5, < 3.2)
+  mini_magick (~> 4.5, >= 4.5.1)
   puma (~> 3.11)
   rails (~> 5.2.0)
   spring

@@ -8,6 +8,7 @@ gem 'sqlite3'
 gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave', '~> 0.11.2'
+gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
