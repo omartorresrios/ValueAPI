@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       post 'google/login' => 'google_logins#create'
     end
 
+    post ':id/write_review' => 'review#create'
+
   end
 
 end

@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_01_040622) do
+ActiveRecord::Schema.define(version: 2018_11_01_225445) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "reviews", force: :cascade do |t|
     t.string "from"
@@ -27,6 +30,7 @@ ActiveRecord::Schema.define(version: 2018_11_01_040622) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar"
+    t.string "password_digest"
     t.index ["google_id"], name: "index_users_on_google_id"
   end
 
