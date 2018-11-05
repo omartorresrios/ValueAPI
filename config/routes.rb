@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
 
     post ':id/write_review' => 'review#create'
+    get 'all_reviews' => 'home#index'
 
   end
 
