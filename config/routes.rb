@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     post ':id/write_review' => 'review#create'
     get 'all_reviews' => 'home#index'
     get 'all_users' => 'search#index'
+    get ':id/received_reviews' => 'profile#received_reviews'
+    get ':id/sent_reviews' => 'profile#sent_reviews'
 
   end
 
