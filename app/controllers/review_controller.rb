@@ -37,7 +37,7 @@ class ReviewController < ApplicationController
     # user_device_ids.each_slice(20) do |device_ids|
 
     response = fcm_client.send(user_device_id, options)
-
+    render json: response
      # end
   end
 
