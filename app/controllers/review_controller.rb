@@ -11,35 +11,33 @@ class ReviewController < ApplicationController
 
       
 
-      send_notification(review.receiver.fcm_token)
+      send_notification(review.receiver.fcm_token, review.sender.fullname)
 
     else
       render json: { errors: review.errors.full_messages }, status: 422
     end
   end
 
-  def send_notification(fcm_token)
+  def send_notification(fcm_token, sender_fullname)
     fcm_client = FCM.new('AAAAbdY0wog:APA91bFfk3FurxxHY-xbxPqnEKGJLEM7aXW-nNmxgtFd97mISAXuNwZdllWh9wrSX6pA92-Yc2JI-r1I3ugn9etBNKUOmVo7IsrI8R4BH_80wp9tQVV0Mash9YN4-9fREPg9Oljro4gR')
-    
+
     options = {
                 priority: 'high',
                 data: {
                   message: 'Hola por ahí'
                 },
                 notification: {
-                  title: 'THIS IS THE NOTIFICATION TITLE',
-                  body: 'Esto va estar offf',
+                  title: 'Nueva reseña dude!',
+                  body: sender_fullname + 'de dejó una reseña!',
                   sound: 'default'
                 }
               }
 
     user_device_id = fcm_token
 
-    # user_device_ids.each_slice(20) do |device_ids|
-
     response = fcm_client.send(user_device_id, options)
     Rails.logger.debug("Notification response: #{response}")
-     # end
+
   end
 
   private
