@@ -4,9 +4,9 @@ class ReviewController < ApplicationController
 
   def create
     review = Review.create_review(@user, current_user, review_params)
-    # redirect_to profile_reviews_path params[:username]
     if review.save
-      render json: review, status: 201
+      render json: review, serializer: ReviewSerializer, status: 200
+      # render json: review, status: 201
     else
       render json: { errors: review.errors.full_messages }, status: 422
     end
