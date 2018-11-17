@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_10_041958) do
+ActiveRecord::Schema.define(version: 2018_11_17_053431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_11_10_041958) do
     t.string "job_description"
     t.string "position"
     t.string "department"
+    t.string "fcm_token"
     t.index ["google_id"], name: "index_users_on_google_id"
   end
 
