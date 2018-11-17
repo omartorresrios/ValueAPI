@@ -27,6 +27,7 @@ class ReviewController < ApplicationController
                   message: 'Hola por ahí'
                 },
                 notification: {
+                  title: 'THIS IS THE NOTIFICATION TITLE',
                   body: 'Esto va estar offf',
                   sound: 'default'
                 }
