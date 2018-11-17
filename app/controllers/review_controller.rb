@@ -7,9 +7,9 @@ class ReviewController < ApplicationController
   def create
     review = Review.create_review(@user, current_user, review_params)
     if review.save
-      # render json: review, serializer: ReviewSerializer, status: 200
+      render json: review, serializer: ReviewSerializer, status: 200
 
-      Rails.logger.debug("My object: #{review.receiver.fullname}")
+      
 
       send_notification(review.receiver.fcm_token)
 
@@ -37,7 +37,7 @@ class ReviewController < ApplicationController
     # user_device_ids.each_slice(20) do |device_ids|
 
     response = fcm_client.send(user_device_id, options)
-    render json: response
+    Rails.logger.debug("Notification response: #{response}")
      # end
   end
 
