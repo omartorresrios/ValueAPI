@@ -7,7 +7,7 @@ class ReviewController < ApplicationController
   def create
     review = Review.create_review(@user, current_user, review_params)
     if review.save
-      render json: review, serializer: ReviewSerializer, status: 200
+      # render json: review, serializer: ReviewSerializer, status: 200
 
       Rails.logger.debug("My object: #{review.receiver.fullname}")
 
