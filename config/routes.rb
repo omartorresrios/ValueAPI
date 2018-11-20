@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get 'all_users' => 'search#index'
     get ':id/received_reviews' => 'profile#received_reviews'
     get ':id/sent_reviews' => 'profile#sent_reviews'
+    patch ':id/edit' => 'user#update'
 
   end
 
