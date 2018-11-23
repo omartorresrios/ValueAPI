@@ -10,6 +10,7 @@ class ReviewController < ApplicationController
       render json: review, serializer: ReviewSerializer, status: 200
 
       sender = review.sender
+      receiver = review.receiver
 
       write_review_notification(review.receiver.fcm_token, receiver.id, sender.fullname)
 
