@@ -11,26 +11,21 @@ class ReviewController < ApplicationController
 
       sender = review.sender
 
-      send_notification(review.receiver.fcm_token, sender.id, sender.fullname, sender.email, sender.job_description, sender.position, sender.department, sender.avatar_url)
+      write_review_notification(review.receiver.fcm_token, receiver.id, sender.fullname)
 
     else
       render json: { errors: review.errors.full_messages }, status: 422
     end
   end
 
-  def send_notification(fcm_token, sender_id, sender_fullname, sender_email, sender_job_description, sender_position, sender_department, sender_avatar_url)
+  def write_review_notification(fcm_token, receiver_id, sender_fullname)
     fcm_client = FCM.new('AAAAbdY0wog:APA91bFfk3FurxxHY-xbxPqnEKGJLEM7aXW-nNmxgtFd97mISAXuNwZdllWh9wrSX6pA92-Yc2JI-r1I3ugn9etBNKUOmVo7IsrI8R4BH_80wp9tQVV0Mash9YN4-9fREPg9Oljro4gR')
 
     options = {
                 priority: 'high',
                 data: {
-                  sender_id: sender_id,
-                  sender_fullname: sender_fullname,
-                  sender_email: sender_email,
-                  sender_job_description: sender_job_description,
-                  sender_position: sender_position,
-                  sender_department: sender_department,
-                  sender_avatar_url: sender_avatar_url 
+                  receiver_id: receiver_id,
+                  sender_fullname: sender_fullname
                 },
                 notification: {
                   title: 'Nueva reseña dude!',
