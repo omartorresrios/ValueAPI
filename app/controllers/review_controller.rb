@@ -12,20 +12,20 @@ class ReviewController < ApplicationController
       sender = review.sender
       receiver = review.receiver
 
-      write_review_notification(review.receiver.fcm_token, receiver.id, sender.fullname)
+      write_review_notification(receiver.fcm_token, review.id, sender.fullname)
 
     else
       render json: { errors: review.errors.full_messages }, status: 422
     end
   end
 
-  def write_review_notification(fcm_token, receiver_id, sender_fullname)
+  def write_review_notification(fcm_token, review_id, sender_fullname)
     fcm_client = FCM.new('AAAAbdY0wog:APA91bFfk3FurxxHY-xbxPqnEKGJLEM7aXW-nNmxgtFd97mISAXuNwZdllWh9wrSX6pA92-Yc2JI-r1I3ugn9etBNKUOmVo7IsrI8R4BH_80wp9tQVV0Mash9YN4-9fREPg9Oljro4gR')
 
     options = {
                 priority: 'high',
                 data: {
-                  receiver_id: receiver_id,
+                  review_id: review_id,
                   sender_fullname: sender_fullname
                 },
                 notification: {
