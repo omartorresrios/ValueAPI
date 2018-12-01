@@ -13,6 +13,7 @@ class Review < ApplicationRecord
     review.from = current.nil? ? nil : current.id
     review.to = user.id
     review.body = params[:body]
+    review.value = params[:value]
     review.created_at = Time.now
     review.save
     review

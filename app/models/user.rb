@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_many :send_reviews, class_name: 'Review', foreign_key: 'from', dependent: :destroy
   has_many :received_reviews, class_name: 'Review', foreign_key: 'to', dependent: :destroy
+  belongs_to :company
+  belongs_to :department
 
   mount_uploader :avatar, AvatarUploader
 

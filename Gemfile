@@ -13,6 +13,7 @@ gem 'active_model_serializers', '~> 0.10.2'
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 gem 'jwt', '~> 1.5', '>= 1.5.4'
 gem 'fcm'
+gem 'pry-rails', '~> 0.3.4'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

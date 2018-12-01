@@ -45,7 +45,7 @@ class ReviewController < ApplicationController
   private
 
     def review_params
-      params.permit(:body)
+      params.permit(:body, :value)
     end
 
     def set_user

@@ -4,8 +4,24 @@ class ProfileController < ApplicationController
 
   def profile
     @user = User.find_by(id: params[:id])
-    render json: @user, status: 200
+    render json: @user, serializer: UserSerializer, status: 201
   end
+
+  def company
+    @company = Company.find_by(id: params[:id])
+    render json: @company, serializer: CompanySerializer, status: 201
+  end
+
+  def department
+    @department = Department.find_by(id: params[:id])
+    render json: @department, serializer: DepartmentSerializer, status: 201
+  end
+
+  def value
+    @value = Value.find_by(id: params[:id])
+    render json: @value, serializer: ValueSerializer, status: 201
+  end
+
 
   def received_reviews
     if @user.present?
