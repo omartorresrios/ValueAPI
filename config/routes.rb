@@ -16,12 +16,6 @@ Rails.application.routes.draw do
     get ':id/sent_reviews' => 'profile#sent_reviews'
     patch ':id/edit' => 'user#update'
 
-    
-    get ':id/company' => 'profile#company'
-    get ':id/department' => 'profile#department'
-    get ':id/value' => 'profile#value'
-
-
   end
 
 end

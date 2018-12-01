@@ -15,7 +15,7 @@ class UserController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:position, :job_description, :department)
+      params.require(:user).permit(:position, :job_description)
     end
 
 end
