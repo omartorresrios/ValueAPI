@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_01_155401) do
+ActiveRecord::Schema.define(version: 2018_12_02_141310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2018_12_01_155401) do
     t.string "fcm_token"
     t.bigint "department_id"
     t.bigint "company_id"
+    t.boolean "is_admin"
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["department_id"], name: "index_users_on_department_id"
     t.index ["google_id"], name: "index_users_on_google_id"
