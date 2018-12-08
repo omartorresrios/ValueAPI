@@ -1,5 +1,5 @@
 class CurrentUserSerializer < ActiveModel::Serializer
-  attributes :id, :created_at, :authentication_token, :fcm_token, :email, :job_description, :position, :fullname, :avatar_url
+  attributes :id, :created_at, :authentication_token, :fcm_token, :is_admin, :email, :job_description, :position, :fullname, :avatar_url
 
   belongs_to :company, serializer: CompanySerializer
   belongs_to :department, serializer: DepartmentSerializer
