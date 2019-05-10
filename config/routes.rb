@@ -7,6 +7,17 @@ Rails.application.routes.draw do
       post 'google/login' => 'google_logins#create'
     end
 
+    # Admin
+    get ':id/departments_that_most_recognize' => 'admin#departments_that_most_recognize'
+    get ':id/departments_most_recognize' => 'admin#departments_most_recognize'
+    get ':id/employees_who_most_recognize' => 'admin#employees_who_most_recognize'
+    get ':id/employees_most_recognize' => 'admin#employees_most_recognize'
+    get ':id/number_of_reviews_by_value' => 'admin#number_of_reviews_by_value'
+    get ':id/number_of_reviews' => 'admin#number_of_reviews'
+    get ':id/total_employees_who_recognized' => 'admin#total_employees_who_recognized'
+    get ':id/total_employees_that_where_recognized' => 'admin#total_employees_that_where_recognized'
+    get ':id/total_empl_that_were_recognized_counter' => 'admin#total_empl_that_were_recognized_counter'
+
     post ':id/write_review' => 'review#create'
     get 'all_reviews' => 'home#index'
     get 'all_users' => 'search#index'

@@ -17,6 +17,7 @@ gem 'pry-rails', '~> 0.3.4'
 gem 'rack-cors', require: 'rack/cors'
 gem 'haml'
 gem 'ransack'
+gem 'counter_culture', '~> 2.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

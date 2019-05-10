@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_02_141310) do
+ActiveRecord::Schema.define(version: 2019_05_09_172446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 2018_12_02_141310) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.integer "total_reviews_count", default: 0
+    t.integer "total_empl_who_recognized_counter", default: 0, null: false
+    t.integer "total_empl_that_were_recognized_counter", default: 0, null: false
   end
 
   create_table "departments", force: :cascade do |t|
@@ -36,6 +39,8 @@ ActiveRecord::Schema.define(version: 2018_12_02_141310) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "value"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_reviews_on_company_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,9 +57,20 @@ ActiveRecord::Schema.define(version: 2018_12_02_141310) do
     t.bigint "department_id"
     t.bigint "company_id"
     t.boolean "is_admin"
+    t.integer "send_reviews_count", default: 0
+    t.integer "received_reviews_count", default: 0
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["department_id"], name: "index_users_on_department_id"
     t.index ["google_id"], name: "index_users_on_google_id"
+  end
+
+  create_table "valueings", force: :cascade do |t|
+    t.bigint "review_id"
+    t.bigint "value_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_valueings_on_review_id"
+    t.index ["value_id"], name: "index_valueings_on_value_id"
   end
 
   create_table "values", force: :cascade do |t|
@@ -66,7 +82,10 @@ ActiveRecord::Schema.define(version: 2018_12_02_141310) do
   end
 
   add_foreign_key "departments", "companies"
+  add_foreign_key "reviews", "companies"
   add_foreign_key "users", "companies"
   add_foreign_key "users", "departments"
+  add_foreign_key "valueings", "\"values\"", column: "value_id"
+  add_foreign_key "valueings", "reviews"
   add_foreign_key "values", "companies"
 end
