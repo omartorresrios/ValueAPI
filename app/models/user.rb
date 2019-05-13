@@ -6,6 +6,8 @@ class User < ApplicationRecord
   belongs_to :company
   belongs_to :department
 
+  scope :last_month_reviews, lambda { joins(:send_reviews).where(send_reviews: { from: 17 }).where('DATE(send_reviews.created_at) > ?', Date.today - 1.month)}
+
   mount_uploader :avatar, AvatarUploader
 
   EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i

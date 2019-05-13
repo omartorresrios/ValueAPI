@@ -12,8 +12,8 @@ class Review < ApplicationRecord
   validates :body, presence: true
 
   scope :recent, -> { order(created_at: :desc) }
-  scope :last_month, lambda { where('DATE(created_at) > ?', Date.today - 1.month)}
-  
+  scope :last_month, lambda { where('DATE(reviews.created_at) > ?', Date.today - 1.month)}
+
   def self.create_review(user, current, params)
     review = Review.new
     review.from = current.nil? ? nil : current.id
