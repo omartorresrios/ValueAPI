@@ -1,6 +1,6 @@
 class Company < ApplicationRecord
-	has_many :department
-	has_many :user
-	has_many :value
-	has_many :review
+	has_many :departments
+	has_many :users
+	has_many :values
+	has_many :reviews
 end

@@ -82,25 +82,46 @@ class AdminController < ApplicationController
     render json: @data_array, status: 200
   end
 
+  # Last month
   def number_of_reviews
     @company = Company.find_by(id: params[:id])
-    @reviews = @company.total_reviews_count
+    @reviews = @company.reviews.last_month.count
     render json: @reviews, status: 200
   end
 
+  # Last month
   def total_employees_who_recognized
     @total_employees_who_recognized ||= 0
+    @ids_array = []
 
     @company = Company.find_by(id: params[:id])
-    @total_employees_who_recognized = @company.total_empl_who_recognized_counter
+    @reviews = @company.reviews.last_month
+    @reviews.each do |review|
+      if !(@ids_array.include?(review.sender.id))
+        if review.sender.send_reviews_count > 0
+          @total_employees_who_recognized += 1
+          @ids_array << review.sender.id
+        end
+      end
+    end
     render json: @total_employees_who_recognized, status: 200
   end
 
+  # Last month
   def total_employees_that_where_recognized
     @total_employees_that_where_recognized ||= 0
+    @ids_array = []
 
     @company = Company.find_by(id: params[:id])
-    @total_employees_that_where_recognized = @company.total_empl_that_were_recognized_counter
+    @reviews = @company.reviews.last_month
+    @reviews.each do |review|
+      if !(@ids_array.include?(review.receiver.id))
+        if review.receiver.received_reviews_count > 0
+          @total_employees_that_where_recognized += 1
+          @ids_array << review.receiver.id
+        end
+      end
+    end
     render json: @total_employees_that_where_recognized, status: 200
   end
 
