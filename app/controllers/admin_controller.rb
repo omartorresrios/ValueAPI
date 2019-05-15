@@ -113,8 +113,8 @@ class AdminController < ApplicationController
   end
 
   # Last month
-  def total_employees_that_where_recognized
-    @total_employees_that_where_recognized ||= 0
+  def total_employees_that_were_recognized
+    @total_employees_that_were_recognized ||= 0
     @ids_array = []
 
     @company = Company.find_by(id: params[:id])
@@ -122,12 +122,12 @@ class AdminController < ApplicationController
     @reviews.each do |review|
       if !(@ids_array.include?(review.receiver.id))
         if review.receiver.received_reviews_count > 0
-          @total_employees_that_where_recognized += 1
+          @total_employees_that_were_recognized += 1
           @ids_array << review.receiver.id
         end
       end
     end
-    render json: @total_employees_that_where_recognized, status: 200
+    render json: @total_employees_that_were_recognized, status: 200
   end
 
   def initialize_vars

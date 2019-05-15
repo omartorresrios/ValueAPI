@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       post 'signup' => 'registrations#create'
       post 'signin' => 'sessions#create'
       post 'google/login' => 'google_logins#create'
+      get 'all_companies' => 'registrations#all_companies'
+
     end
 
     # Admin
@@ -15,7 +17,7 @@ Rails.application.routes.draw do
     get ':id/number_of_reviews_by_value' => 'admin#number_of_reviews_by_value'
     get ':id/number_of_reviews' => 'admin#number_of_reviews'
     get ':id/total_employees_who_recognized' => 'admin#total_employees_who_recognized'
-    get ':id/total_employees_that_where_recognized' => 'admin#total_employees_that_where_recognized'
+    get ':id/total_employees_that_were_recognized' => 'admin#total_employees_that_were_recognized'
     get ':id/total_empl_that_were_recognized_counter' => 'admin#total_empl_that_were_recognized_counter'
 
     post ':id/write_review' => 'review#create'

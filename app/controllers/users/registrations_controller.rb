@@ -14,6 +14,11 @@ class Users::RegistrationsController < ApplicationController
     end
   end
 
+  def all_companies
+    @companies = Company.all
+  	render json: @companies, status: 200
+  end
+
   private
 
     def user_params

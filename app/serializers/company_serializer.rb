@@ -1,7 +1,7 @@
 class CompanySerializer < ActiveModel::Serializer
   attributes :id, :name
 
-  has_many :department, serializer: DepartmentSerializer
-  has_many :user, serializer: UserSerializer
-  has_many :value, serializer: ValueSerializer
+  has_many :departments, serializer: DepartmentSerializer
+  has_many :users, serializer: UserSerializer
+  has_many :values, serializer: ValueSerializer
 end
