@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       post 'signin' => 'sessions#create'
       post 'google/login' => 'google_logins#create'
       get 'all_companies' => 'registrations#all_companies'
-
+      get ':id/all_departments' => 'registrations#all_departments'
     end
 
     # Admin

@@ -19,6 +19,12 @@ class Users::RegistrationsController < ApplicationController
   	render json: @companies, status: 200
   end
 
+  def all_departments
+    @company = Company.find_by(id: params[:id])
+    @departments = @company.departments
+  	render json: @departments, status: 200
+  end
+
   private
 
     def user_params
