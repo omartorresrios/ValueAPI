@@ -19,6 +19,12 @@ class ReviewController < ApplicationController
     end
   end
 
+  def all_values
+    @company = Company.find_by(id: params[:id])
+    @values = @company.values
+  	render json: @values, status: 200
+  end
+
   def write_review_notification(fcm_token, review_id, sender_fullname)
     fcm_client = FCM.new('AAAAbdY0wog:APA91bFfk3FurxxHY-xbxPqnEKGJLEM7aXW-nNmxgtFd97mISAXuNwZdllWh9wrSX6pA92-Yc2JI-r1I3ugn9etBNKUOmVo7IsrI8R4BH_80wp9tQVV0Mash9YN4-9fREPg9Oljro4gR')
 
