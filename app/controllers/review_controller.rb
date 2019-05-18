@@ -6,6 +6,7 @@ class ReviewController < ApplicationController
 
   def create
     review = Review.create_review(@user, current_user, review_params)
+    review.values << Value.find_by(id: params[:value_id])
     if review.save
       render json: review, serializer: ReviewSerializer, status: 200
 
@@ -51,7 +52,7 @@ class ReviewController < ApplicationController
   private
 
     def review_params
-      params.permit(:body, :value)
+      params.permit(:body)
     end
 
     def set_user

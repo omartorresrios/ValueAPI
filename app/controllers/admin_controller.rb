@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-
+  
   # Last month
   def departments_that_most_recognize
     @total_send_reviews ||= 0

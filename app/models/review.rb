@@ -10,6 +10,7 @@ class Review < ApplicationRecord
   has_many :values, through: :valueings
 
   validates :body, presence: true
+  # validates :value_id, presence: true
 
   scope :recent, -> { order(created_at: :desc) }
   scope :last_month, lambda { where('DATE(reviews.created_at) > ?', Date.today - 1.month)}
@@ -19,7 +20,6 @@ class Review < ApplicationRecord
     review.from = current.nil? ? nil : current.id
     review.to = user.id
     review.body = params[:body]
-    review.value = params[:value]
     review.company_id = user.company.id
     review.created_at = Time.now
     review.save

@@ -20,6 +20,13 @@ Rails.application.routes.draw do
     get ':id/total_employees_that_were_recognized' => 'admin#total_employees_that_were_recognized'
     get ':id/total_empl_that_were_recognized_counter' => 'admin#total_empl_that_were_recognized_counter'
 
+
+
+    get ':id/company' => 'admin#company'
+    get ':id/value_one' => 'review#value_one'
+
+
+
     # Employee
     post ':id/write_review' => 'review#create'
     get 'all_reviews' => 'home#index'

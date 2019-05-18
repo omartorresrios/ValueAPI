@@ -1,5 +1,5 @@
 class ValueSerializer < ActiveModel::Serializer
   attributes :id, :name
 
-  belongs_to :company, serializer: CompanySerializer
+  has_many :reviews, serializer: ReviewSerializer
 end
