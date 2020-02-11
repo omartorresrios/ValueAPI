@@ -6,6 +6,11 @@ class SearchController < ApplicationController
   	render json: @users, status: 200
   end
 
+  def company_users
+    @company_users = current_user.company.users
+    render json: @company_users, status: 200
+  end
+
   def search
     @users = []
   end

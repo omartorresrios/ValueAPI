@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     get 'all_reviews' => 'home#index'
     get ':id/all_values' => 'review#all_values'
     get 'all_users' => 'search#index'
+    get 'current_user_company_employees' => 'search#company_users'
     get ':id/received_reviews' => 'profile#received_reviews'
     get ':id/profile' => 'profile#profile'
     get ':id/sent_reviews' => 'profile#sent_reviews'
