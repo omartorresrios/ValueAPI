@@ -5,7 +5,7 @@ ruby '2.7.0'
 
 gem 'rails', '~> 5.2.0'
 gem 'pg', '~> 1.2.2'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave', '~> 0.11.2'
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
